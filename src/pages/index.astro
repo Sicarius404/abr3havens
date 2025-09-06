@@ -1,16 +1,51 @@
 ---
-
+import { Image } from "astro:assets";
+import mainBuilding from "../images/main-building.jpg";
+import "../styles/global.css";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <section class="relative h-[60vh] w-full">
+      <Image
+        src={mainBuilding}
+        alt="Main building of Abr3havens, a modern architectural structure."
+        class="absolute inset-0 w-full h-full object-cover"
+        widths={[480, 768, 1024, 1920]}
+        sizes="(max-width: 768px) 100vw, 50vw"
+      />
+      <div
+        class="absolute bottom-8 right-8 bg-black bg-opacity-50 p-6 rounded-lg"
+      >
+        <div class="flex space-x-4 text-center">
+          <div class="p-4 rounded">
+            <h3 class="text-2xl font-bold">3</h3>
+            <p class="text-sm">Properties</p>
+          </div>
+          <div class="p-4 rounded">
+            <h3 class="text-2xl font-bold">12</h3>
+            <p class="text-sm">Spaces</p>
+          </div>
+          <div class="p-4 rounded">
+            <h3 class="text-2xl font-bold">...</h3>
+            <p class="text-sm">Possibilities</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <main class="p-8">
+      <h2 class="text-3xl font-bold mb-4">More Content Below</h2>
+      <p>
+        This is where the rest of your page content will go. You can now scroll
+        down to see it.
+      </p>
+    </main>
+  </body>
 </html>
