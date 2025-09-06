@@ -12,6 +12,12 @@ import Header from "../components/Header.astro";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-gray-900 text-white">
     <Header />
@@ -24,30 +30,51 @@ import Header from "../components/Header.astro";
         widths={[480, 768, 1024, 1920]}
         sizes="(max-width: 768px) 100vw, 50vw"
       />
-      <h1
-        class="text-4xl md:text-6xl font-bold text-center text-white z-10 max-w-4xl"
+      <div
+        class="absolute inset-x-0 top-0 bottom-64 flex items-center justify-center md:bottom-auto md:top-1/2 md:-translate-y-1/2"
       >
-        We don’t just invest in property, we restore possibility!
-      </h1>
-      <div class="absolute bottom-8 right-8 border-4 border-white/75 p-12">
-        <div class="flex items-center gap-12 text-center">
-          <div class="border border-white/75 p-8">
-            <h3 class="text-4xl font-bold">3</h3>
-            <p class="text-lg uppercase tracking-wider">Properties</p>
+        <h1
+          class="text-2xl sm:text-3xl md:text-6xl font-bold text-center text-white z-10 max-w-4xl px-4"
+          style="font-family: 'Poppins', sans-serif;"
+        >
+          We don’t just invest in property, we restore possibility!
+        </h1>
+      </div>
+      <div
+        class="absolute bottom-4 left-4 right-4 md:left-auto md:bottom-8 md:right-8 border-2 md:border-4 border-white/75 p-2 md:p-8 lg:p-12"
+      >
+        <div
+          class="flex flex-col md:flex-row items-center justify-around gap-2 md:gap-6 lg:gap-12 text-center"
+        >
+          <div class="border border-white/75 p-1 md:p-4 lg:p-8">
+            <h3 class="text-xl md:text-4xl font-bold">3</h3>
+            <p class="text-xs md:text-lg uppercase tracking-wider">
+              Properties
+            </p>
           </div>
 
-          <div class="w-24 border-t-4 border-cyan-400"></div>
-
-          <div class="border border-white/75 p-8">
-            <h3 class="text-4xl font-bold">12</h3>
-            <p class="text-lg uppercase tracking-wider">Spaces</p>
+          <div class="h-4 border-l-2 border-cyan-400 md:hidden"></div>
+          <div
+            class="hidden md:block w-12 lg:w-24 border-t-2 lg:border-t-4 border-cyan-400"
+          >
           </div>
 
-          <div class="w-24 border-t-4 border-cyan-400"></div>
+          <div class="border border-white/75 p-1 md:p-4 lg:p-8">
+            <h3 class="text-xl md:text-4xl font-bold">12</h3>
+            <p class="text-xs md:text-lg uppercase tracking-wider">Spaces</p>
+          </div>
 
-          <div class="border border-white/75 p-8">
-            <h3 class="text-4xl font-bold">...</h3>
-            <p class="text-lg uppercase tracking-wider">Possibilities</p>
+          <div class="h-4 border-l-2 border-cyan-400 md:hidden"></div>
+          <div
+            class="hidden md:block w-12 lg:w-24 border-t-2 lg:border-t-4 border-cyan-400"
+          >
+          </div>
+
+          <div class="border border-white/75 p-1 md:p-4 lg:p-8">
+            <h3 class="text-xl md:text-4xl font-bold">...</h3>
+            <p class="text-xs md:text-lg uppercase tracking-wider">
+              Possibilities
+            </p>
           </div>
         </div>
       </div>

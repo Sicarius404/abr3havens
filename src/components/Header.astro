@@ -3,19 +3,22 @@ import { Image } from "astro:assets";
 import abr3havensLogo from "../images/abr3-logo.jpg";
 ---
 
-<header class="absolute top-0 left-0 right-0 z-10 p-4">
+<header
+  class="bg-gray-900/75 backdrop-blur-sm p-4 sticky top-0 z-50"
+  id="main-header"
+>
   <nav class="container mx-auto flex justify-between items-center">
     <a href="/" class="flex items-center space-x-2">
       <Image
         src={abr3havensLogo}
         alt="Abr3havens Logo"
-        width={32}
-        height={32}
-        class="h-8 w-8"
+        width={48}
+        height={48}
+        class="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 transition-all"
       />
-      <span class="text-2xl font-bold">ABR<sup>3</sup>havens</span>
+      <span class="text-2xl font-bold">ABR<sup>3</sup>Havens</span>
     </a>
-    <div class="flex items-center space-x-6">
+    <div class="hidden md:flex items-center space-x-6">
       <a href="/" class="hover:text-cyan-400 transition-colors">Home</a>
       <a href="/about" class="hover:text-cyan-400 transition-colors">About Us</a
       >
@@ -25,5 +28,64 @@ import abr3havensLogo from "../images/abr3-logo.jpg";
         >Book Now</a
       >
     </div>
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-white focus:outline-none z-50 relative">
+        <svg
+          id="menu-open-icon"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M12 18h8"></path>
+        </svg>
+        <svg
+          id="menu-close-icon"
+          class="w-6 h-6 hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
   </nav>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <a href="/" class="block py-2 px-4 text-sm hover:bg-gray-700">Home</a>
+    <a href="/about" class="block py-2 px-4 text-sm hover:bg-gray-700"
+      >About Us</a
+    >
+    <a href="/booking" class="block py-2 px-4 text-sm hover:bg-gray-700"
+      >Book Now</a
+    >
+  </div>
 </header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const openIcon = document.getElementById("menu-open-icon");
+    const closeIcon = document.getElementById("menu-close-icon");
+
+    if (menuBtn && mobileMenu && openIcon && closeIcon) {
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        openIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
+      });
+    }
+  });
+</script>
