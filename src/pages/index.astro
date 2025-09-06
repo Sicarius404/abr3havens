@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import mainBuilding from "../images/main-building.jpg";
 import "../styles/global.css";
 import Header from "../components/Header.astro";
+import abr3havensLogo from "../images/abr3-logo.jpg";
 ---
 
 <html lang="en">
@@ -77,12 +78,58 @@ import Header from "../components/Header.astro";
         </div>
       </div>
     </section>
-    <main class="p-8">
-      <h2 class="text-3xl font-bold mb-4">More Content Below</h2>
-      <p>
-        This is where the rest of your page content will go. You can now scroll
-        down to see it.
-      </p>
+    <div class="h-3 bg-gray-800"></div>
+    <main class="bg-white text-gray-800 py-20 px-4 sm:px-6 lg:px-8">
+      <div
+        class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+      >
+        <div class="text-left">
+          <h2 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-4">
+            More than a rental
+          </h2>
+          <p class="text-4xl font-semibold text-cyan-500 mb-8">
+            The ABR<sup>3</sup> difference
+          </p>
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-xl font-bold mb-2">Vacation rewards</h3>
+              <p class="text-lg text-gray-600">
+                → Exclusive tenant discounts at our vacation property.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Customer centred</h3>
+              <p class="text-lg text-gray-600">
+                → Your needs guide everything we do.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Connection benefits</h3>
+              <p class="text-lg text-gray-600">
+                → “The more connected you are, the more you gain.”
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Always maintained</h3>
+              <p class="text-lg text-gray-600">
+                → “Clean, safe, and well-cared-for spaces, always.”
+              </p>
+            </div>
+          </div>
+          <a
+            href="/about"
+            class="inline-block bg-gray-900 text-white font-bold py-3 px-6 rounded mt-12 hover:bg-gray-700 transition-colors"
+            >About Us</a
+          >
+        </div>
+        <div class="flex justify-center md:justify-end">
+          <Image
+            src={abr3havensLogo}
+            alt="Abr3havens Logo"
+            class="max-w-xs md:max-w-md w-full"
+          />
+        </div>
+      </div>
     </main>
   </body>
 </html>
