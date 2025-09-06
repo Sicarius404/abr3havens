@@ -259,34 +259,298 @@ const rentalImages = [
           </div>
 
           <!-- Text Content -->
-          <div class="text-left">
+          <div class="flex items-stretch text-left">
             <div
-              class="rounded-lg border-l-4 border-cyan-500 bg-white p-8 shadow-lg"
+              class="flex h-full min-h-[500px] flex-col justify-between rounded-lg border-l-4 border-cyan-500 bg-white p-8 shadow-lg"
             >
-              <h3 class="mb-6 text-2xl font-bold text-gray-900">
-                Our First Vacation Rental
-              </h3>
-              <div class="prose prose-lg leading-relaxed text-gray-700">
-                <p class="mb-4">
-                  We're excited to introduce our very first vacation rental —
-                  the start of many more to come.
-                </p>
-                <p class="mb-4">
-                  Right on the beach in Amanzimtoti, this home has been
-                  thoughtfully transformed into a welcoming space for families,
-                  friends, and travellers to relax, connect, and make lasting
-                  memories.
-                </p>
-                <div class="mt-6 border-t border-gray-200 pt-6">
-                  <p
-                    class="text-sm font-semibold tracking-wider text-cyan-600 uppercase"
-                  >
-                    Location: Amanzimtoti Beachfront
+              <div>
+                <h3 class="mb-8 text-3xl font-bold text-gray-900">
+                  Our First Vacation Rental
+                </h3>
+                <div class="prose prose-lg leading-relaxed text-gray-700">
+                  <p class="mb-6 text-2xl">
+                    We're excited to introduce our very first vacation rental —
+                    the start of many more to come.
                   </p>
+                  <p class="mb-8 text-2xl">
+                    Right on the beach in Amanzimtoti, this home has been
+                    thoughtfully transformed into a welcoming space for
+                    families, friends, and travellers to relax, connect, and
+                    make lasting memories.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Bottom section with location and buttons -->
+              <div class="mt-auto">
+                <div class="border-t border-gray-200 pt-6">
+                  <div class="mb-4 flex items-center justify-between">
+                    <p
+                      class="text-sm font-semibold tracking-wider text-cyan-600 uppercase"
+                    >
+                      Location: Amanzimtoti Beachfront
+                    </p>
+                  </div>
+
+                  <!-- Action Buttons -->
+                  <div class="flex space-x-4">
+                    <a
+                      href="https://book.nightsbridge.com/37984"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex flex-1 items-center justify-center rounded-lg bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-cyan-700 hover:shadow-lg"
+                    >
+                      <svg
+                        class="mr-2 h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        ></path>
+                      </svg>
+                      Book Now
+                    </a>
+                    <button
+                      class="inline-flex flex-1 items-center justify-center rounded-lg bg-gray-100 px-6 py-3 text-sm font-semibold text-gray-700 shadow-md transition-colors hover:bg-gray-200 hover:shadow-lg"
+                      onclick="alert('More information coming soon! For now, please use the booking link or contact us directly.')"
+                    >
+                      <svg
+                        class="mr-2 h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        ></path>
+                      </svg>
+                      More Info
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Other Investments Section -->
+    <section class="bg-white py-20 px-4 sm:px-6 lg:px-8">
+      <div class="container mx-auto">
+        <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 text-center mb-16">
+          Our Other Investments
+        </h2>
+        
+        <!-- Property Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          
+          <!-- Numba 1 Property -->
+          <div class="bg-gray-50 rounded-2xl p-8 shadow-lg">
+            <div class="mb-6">
+              <!-- Placeholder image for Numba 1 -->
+              <div class="relative">
+                <div class="carousel-container-numba overflow-hidden rounded-lg shadow-lg mb-4">
+                  <div class="carousel-track-numba flex transition-transform duration-500 ease-in-out" id="carousel-track-numba">
+                    <!-- Using some existing images as placeholders -->
+                    <div class="carousel-slide-numba min-w-full">
+                      <img
+                        src={cabanas1.src}
+                        alt="Numba 1 property view 1"
+                        class="w-full h-64 object-cover cursor-pointer"
+                        onclick="openLightboxNumba(0)"
+                      />
+                    </div>
+                    <div class="carousel-slide-numba min-w-full">
+                      <img
+                        src={cabanas2.src}
+                        alt="Numba 1 property view 2"
+                        class="w-full h-64 object-cover cursor-pointer"
+                        onclick="openLightboxNumba(1)"
+                      />
+                    </div>
+                    <div class="carousel-slide-numba min-w-full">
+                      <img
+                        src={cabanas3.src}
+                        alt="Numba 1 property view 3"
+                        class="w-full h-64 object-cover cursor-pointer"
+                        onclick="openLightboxNumba(2)"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Carousel Controls for Numba 1 -->
+                <button 
+                  class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
+                  id="prevBtnNumba"
+                  aria-label="Previous image"
+                >
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                  </svg>
+                </button>
+                
+                <button 
+                  class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
+                  id="nextBtnNumba"
+                  aria-label="Next image"
+                >
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                
+                <!-- Thumbnail Images for Numba 1 -->
+                <div class="flex justify-center mt-4 space-x-2 overflow-x-auto pb-2">
+                  <button 
+                    class="thumbnail-btn-numba flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 border-cyan-500 transition-colors"
+                    data-index="0"
+                  >
+                    <img src={cabanas1.src} alt="Thumbnail 1" class="w-full h-full object-cover" />
+                  </button>
+                  <button 
+                    class="thumbnail-btn-numba flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 border-transparent hover:border-cyan-500 transition-colors"
+                    data-index="1"
+                  >
+                    <img src={cabanas2.src} alt="Thumbnail 2" class="w-full h-full object-cover" />
+                  </button>
+                  <button 
+                    class="thumbnail-btn-numba flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 border-transparent hover:border-cyan-500 transition-colors"
+                    data-index="2"
+                  >
+                    <img src={cabanas3.src} alt="Thumbnail 3" class="w-full h-full object-cover" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Numba 1</h3>
+              <p class="text-lg text-gray-600 mb-4">Our very first property - where it all began</p>
+              <p class="text-gray-700 mb-6">
+                This special property holds a unique place in our hearts as our very first investment. 
+                It represents the foundation of our journey and our commitment to creating exceptional spaces.
+              </p>
+              <button
+                class="inline-flex items-center px-6 py-3 bg-gray-600 text-white text-sm font-semibold rounded-lg hover:bg-gray-700 transition-colors shadow-md hover:shadow-lg"
+                onclick="alert('More details about Numba 1 coming soon!')"
+              >
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Learn More
+              </button>
+            </div>
+          </div>
+
+          <!-- Tamarisk Property -->
+          <div class="bg-gray-50 rounded-2xl p-8 shadow-lg">
+            <div class="mb-6">
+              <!-- Placeholder image for Tamarisk -->
+              <div class="relative">
+                <div class="carousel-container-tamarisk overflow-hidden rounded-lg shadow-lg mb-4">
+                  <div class="carousel-track-tamarisk flex transition-transform duration-500 ease-in-out" id="carousel-track-tamarisk">
+                    <!-- Using some existing images as placeholders -->
+                    <div class="carousel-slide-tamarisk min-w-full">
+                      <img
+                        src={cabanas4.src}
+                        alt="Tamarisk property view 1"
+                        class="w-full h-64 object-cover cursor-pointer"
+                        onclick="openLightboxTamarisk(0)"
+                      />
+                    </div>
+                    <div class="carousel-slide-tamarisk min-w-full">
+                      <img
+                        src={cabanas5.src}
+                        alt="Tamarisk property view 2"
+                        class="w-full h-64 object-cover cursor-pointer"
+                        onclick="openLightboxTamarisk(1)"
+                      />
+                    </div>
+                    <div class="carousel-slide-tamarisk min-w-full">
+                      <img
+                        src={cabanas6.src}
+                        alt="Tamarisk property view 3"
+                        class="w-full h-64 object-cover cursor-pointer"
+                        onclick="openLightboxTamarisk(2)"
+                      />
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Carousel Controls for Tamarisk -->
+                <button 
+                  class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
+                  id="prevBtnTamarisk"
+                  aria-label="Previous image"
+                >
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                  </svg>
+                </button>
+                
+                <button 
+                  class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
+                  id="nextBtnTamarisk"
+                  aria-label="Next image"
+                >
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </button>
+                
+                <!-- Thumbnail Images for Tamarisk -->
+                <div class="flex justify-center mt-4 space-x-2 overflow-x-auto pb-2">
+                  <button 
+                    class="thumbnail-btn-tamarisk flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 border-cyan-500 transition-colors"
+                    data-index="0"
+                  >
+                    <img src={cabanas4.src} alt="Thumbnail 1" class="w-full h-full object-cover" />
+                  </button>
+                  <button 
+                    class="thumbnail-btn-tamarisk flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 border-transparent hover:border-cyan-500 transition-colors"
+                    data-index="1"
+                  >
+                    <img src={cabanas5.src} alt="Thumbnail 2" class="w-full h-full object-cover" />
+                  </button>
+                  <button 
+                    class="thumbnail-btn-tamarisk flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 border-transparent hover:border-cyan-500 transition-colors"
+                    data-index="2"
+                  >
+                    <img src={cabanas6.src} alt="Thumbnail 3" class="w-full h-full object-cover" />
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Tamarisk</h3>
+              <p class="text-lg text-gray-600 mb-4">A distinctive investment opportunity</p>
+              <p class="text-gray-700 mb-6">
+                Tamarisk represents our continued growth and commitment to finding unique properties 
+                that offer both excellent investment potential and beautiful living spaces.
+              </p>
+              <button
+                class="inline-flex items-center px-6 py-3 bg-gray-600 text-white text-sm font-semibold rounded-lg hover:bg-gray-700 transition-colors shadow-md hover:shadow-lg"
+                onclick="alert('More details about Tamarisk coming soon!')"
+              >
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Learn More
+              </button>
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>
@@ -575,6 +839,198 @@ const rentalImages = [
 
       // Initialize carousel
       updateCarousel();
+
+      // ===== NUMBA 1 CAROUSEL FUNCTIONALITY =====
+      let currentSlideNumba = 0;
+      const totalSlidesNumba = 3; // We have 3 placeholder images
+      const trackNumba = document.getElementById("carousel-track-numba");
+      const thumbnailsNumba = document.querySelectorAll(".thumbnail-btn-numba");
+      const prevBtnNumba = document.getElementById("prevBtnNumba");
+      const nextBtnNumba = document.getElementById("nextBtnNumba");
+
+      const imageSourcesNumba = [];
+      document.querySelectorAll(".carousel-slide-numba img").forEach((img) => {
+        const imgElement = img as HTMLImageElement;
+        if (imgElement && imgElement.src) {
+          imageSourcesNumba.push(imgElement.src);
+        }
+      });
+
+      function updateCarouselNumba() {
+        const translateX = -currentSlideNumba * 100;
+        if (trackNumba) {
+          trackNumba.style.transform = `translateX(${translateX}%)`;
+        }
+
+        thumbnailsNumba.forEach((thumbnail, index) => {
+          if (index === currentSlideNumba) {
+            thumbnail.classList.remove("border-transparent");
+            thumbnail.classList.add("border-cyan-500");
+          } else {
+            thumbnail.classList.remove("border-cyan-500");
+            thumbnail.classList.add("border-transparent");
+          }
+        });
+      }
+
+      function nextSlideNumba() {
+        currentSlideNumba = (currentSlideNumba + 1) % totalSlidesNumba;
+        updateCarouselNumba();
+      }
+
+      function previousSlideNumba() {
+        currentSlideNumba = (currentSlideNumba - 1 + totalSlidesNumba) % totalSlidesNumba;
+        updateCarouselNumba();
+      }
+
+      function goToSlideNumba(index) {
+        currentSlideNumba = index;
+        updateCarouselNumba();
+      }
+
+      function openLightboxNumba(index) {
+        currentSlideNumba = index;
+        updateCarouselNumba();
+        
+        if (lightboxImage && imageSourcesNumba[currentSlideNumba]) {
+          const imgElement = lightboxImage as HTMLImageElement;
+          imgElement.src = imageSourcesNumba[currentSlideNumba];
+          imgElement.alt = `Numba 1 property view ${currentSlideNumba + 1}`;
+        }
+        if (lightboxCounter) {
+          lightboxCounter.textContent = `${currentSlideNumba + 1} of ${totalSlidesNumba}`;
+        }
+        
+        // Update lightbox title and description
+        const lightboxTitle = document.getElementById("lightbox-title");
+        const lightboxDescription = document.getElementById("lightbox-description");
+        if (lightboxTitle) lightboxTitle.textContent = "Numba 1 - Our First Property";
+        if (lightboxDescription) lightboxDescription.textContent = "Where our journey began";
+        
+        if (lightbox && lightboxContent) {
+          lightbox.classList.remove("hidden");
+          lightbox.classList.add("flex");
+          
+          document.body.classList.add("lightbox-open");
+          
+          setTimeout(() => {
+            lightboxContent.classList.remove("scale-95", "opacity-0");
+            lightboxContent.classList.add("scale-100", "opacity-100");
+          }, 10);
+        }
+        document.body.style.overflow = "hidden";
+      }
+
+      // Event listeners for Numba 1
+      if (prevBtnNumba) {
+        prevBtnNumba.addEventListener("click", previousSlideNumba);
+      }
+      if (nextBtnNumba) {
+        nextBtnNumba.addEventListener("click", nextSlideNumba);
+      }
+
+      thumbnailsNumba.forEach((thumbnail, index) => {
+        thumbnail.addEventListener("click", () => goToSlideNumba(Number(index)));
+      });
+
+      // Initialize Numba 1 carousel
+      updateCarouselNumba();
+
+      // ===== TAMARISK CAROUSEL FUNCTIONALITY =====
+      let currentSlideTamarisk = 0;
+      const totalSlidesTamarisk = 3; // We have 3 placeholder images
+      const trackTamarisk = document.getElementById("carousel-track-tamarisk");
+      const thumbnailsTamarisk = document.querySelectorAll(".thumbnail-btn-tamarisk");
+      const prevBtnTamarisk = document.getElementById("prevBtnTamarisk");
+      const nextBtnTamarisk = document.getElementById("nextBtnTamarisk");
+
+      const imageSourcesTamarisk = [];
+      document.querySelectorAll(".carousel-slide-tamarisk img").forEach((img) => {
+        const imgElement = img as HTMLImageElement;
+        if (imgElement && imgElement.src) {
+          imageSourcesTamarisk.push(imgElement.src);
+        }
+      });
+
+      function updateCarouselTamarisk() {
+        const translateX = -currentSlideTamarisk * 100;
+        if (trackTamarisk) {
+          trackTamarisk.style.transform = `translateX(${translateX}%)`;
+        }
+
+        thumbnailsTamarisk.forEach((thumbnail, index) => {
+          if (index === currentSlideTamarisk) {
+            thumbnail.classList.remove("border-transparent");
+            thumbnail.classList.add("border-cyan-500");
+          } else {
+            thumbnail.classList.remove("border-cyan-500");
+            thumbnail.classList.add("border-transparent");
+          }
+        });
+      }
+
+      function nextSlideTamarisk() {
+        currentSlideTamarisk = (currentSlideTamarisk + 1) % totalSlidesTamarisk;
+        updateCarouselTamarisk();
+      }
+
+      function previousSlideTamarisk() {
+        currentSlideTamarisk = (currentSlideTamarisk - 1 + totalSlidesTamarisk) % totalSlidesTamarisk;
+        updateCarouselTamarisk();
+      }
+
+      function goToSlideTamarisk(index) {
+        currentSlideTamarisk = index;
+        updateCarouselTamarisk();
+      }
+
+      function openLightboxTamarisk(index) {
+        currentSlideTamarisk = index;
+        updateCarouselTamarisk();
+        
+        if (lightboxImage && imageSourcesTamarisk[currentSlideTamarisk]) {
+          const imgElement = lightboxImage as HTMLImageElement;
+          imgElement.src = imageSourcesTamarisk[currentSlideTamarisk];
+          imgElement.alt = `Tamarisk property view ${currentSlideTamarisk + 1}`;
+        }
+        if (lightboxCounter) {
+          lightboxCounter.textContent = `${currentSlideTamarisk + 1} of ${totalSlidesTamarisk}`;
+        }
+        
+        // Update lightbox title and description
+        const lightboxTitle = document.getElementById("lightbox-title");
+        const lightboxDescription = document.getElementById("lightbox-description");
+        if (lightboxTitle) lightboxTitle.textContent = "Tamarisk Property";
+        if (lightboxDescription) lightboxDescription.textContent = "A distinctive investment opportunity";
+        
+        if (lightbox && lightboxContent) {
+          lightbox.classList.remove("hidden");
+          lightbox.classList.add("flex");
+          
+          document.body.classList.add("lightbox-open");
+          
+          setTimeout(() => {
+            lightboxContent.classList.remove("scale-95", "opacity-0");
+            lightboxContent.classList.add("scale-100", "opacity-100");
+          }, 10);
+        }
+        document.body.style.overflow = "hidden";
+      }
+
+      // Event listeners for Tamarisk
+      if (prevBtnTamarisk) {
+        prevBtnTamarisk.addEventListener("click", previousSlideTamarisk);
+      }
+      if (nextBtnTamarisk) {
+        nextBtnTamarisk.addEventListener("click", nextSlideTamarisk);
+      }
+
+      thumbnailsTamarisk.forEach((thumbnail, index) => {
+        thumbnail.addEventListener("click", () => goToSlideTamarisk(Number(index)));
+      });
+
+      // Initialize Tamarisk carousel
+      updateCarouselTamarisk();
     </script>
   </body>
 </html>
