@@ -7,7 +7,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://abr3havens.com',
+  site: "https://abr3havens.co.za",
 
   vite: {
     plugins: [tailwindcss()],

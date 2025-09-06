@@ -93,7 +93,8 @@
           </p>
         </div>
         <div class="flex items-center space-x-2">
-          <span id="lightbox-counter" class="text-sm text-gray-500">1 of 1</span>
+          <span id="lightbox-counter" class="text-sm text-gray-500">1 of 1</span
+          >
         </div>
       </div>
     </div>
@@ -102,7 +103,7 @@
 
 <script>
   // Initialize lightbox functionality
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightbox-image");
     const lightboxContent = document.getElementById("lightbox-content");
@@ -113,15 +114,16 @@
     const closeLightboxBtn = document.getElementById("closeLightbox");
     const lightboxPrevBtn = document.getElementById("lightboxPrevBtn");
     const lightboxNextBtn = document.getElementById("lightboxNextBtn");
-    
+
     let currentImages = [];
     let currentIndex = 0;
     let currentTitle = "";
 
     function updateLightboxContent() {
       if (lightboxImage && currentImages[currentIndex]) {
-        lightboxImage.src = currentImages[currentIndex];
-        lightboxImage.alt = `${currentTitle} view ${currentIndex + 1}`;
+        const imgElement = lightboxImage as HTMLImageElement;
+        imgElement.src = currentImages[currentIndex];
+        imgElement.alt = `${currentTitle} view ${currentIndex + 1}`;
       }
 
       if (lightboxCounter) {
@@ -153,7 +155,7 @@
         document.body.classList.add("lightbox-open");
 
         // Dispatch event to stop carousel auto-advance
-        document.dispatchEvent(new CustomEvent('lightboxOpened'));
+        document.dispatchEvent(new CustomEvent("lightboxOpened"));
 
         // Animate in
         setTimeout(() => {
@@ -182,12 +184,12 @@
           }
         }, 300);
       }
-      
+
       // Restore body scrolling
       document.body.style.overflow = "";
-      
+
       // Dispatch event to restart carousel auto-advance
-      document.dispatchEvent(new CustomEvent('lightboxClosed'));
+      document.dispatchEvent(new CustomEvent("lightboxClosed"));
     }
 
     function nextImage() {
@@ -199,14 +201,16 @@
 
     function previousImage() {
       if (currentImages.length > 0) {
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        currentIndex =
+          (currentIndex - 1 + currentImages.length) % currentImages.length;
         updateLightboxContent();
       }
     }
 
     // Listen for custom lightbox events from carousels
-    document.addEventListener('openLightbox', (e) => {
-      const { images, currentIndex: startIndex, title } = e.detail;
+    document.addEventListener("openLightbox", (e) => {
+      const customEvent = e as CustomEvent;
+      const { images, currentIndex: startIndex, title } = customEvent.detail;
       openLightbox(images, startIndex, title);
     });
 
@@ -241,7 +245,7 @@
     document.addEventListener("keydown", (e) => {
       if (lightbox && !lightbox.classList.contains("hidden")) {
         e.preventDefault(); // Prevent default scrolling behavior
-        
+
         if (e.key === "Escape") {
           closeLightbox();
         } else if (e.key === "ArrowLeft") {
@@ -253,16 +257,24 @@
     });
 
     // Prevent scrolling when lightbox is open
-    document.addEventListener('wheel', (e) => {
-      if (lightbox && !lightbox.classList.contains("hidden")) {
-        e.preventDefault();
-      }
-    }, { passive: false });
+    document.addEventListener(
+      "wheel",
+      (e) => {
+        if (lightbox && !lightbox.classList.contains("hidden")) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
 
-    document.addEventListener('touchmove', (e) => {
-      if (lightbox && !lightbox.classList.contains("hidden")) {
-        e.preventDefault();
-      }
-    }, { passive: false });
+    document.addEventListener(
+      "touchmove",
+      (e) => {
+        if (lightbox && !lightbox.classList.contains("hidden")) {
+          e.preventDefault();
+        }
+      },
+      { passive: false }
+    );
   });
 </script>

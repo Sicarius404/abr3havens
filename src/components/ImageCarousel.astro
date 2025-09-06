@@ -118,8 +118,9 @@ const { images, title, description, carouselId, className = "" } = Astro.props;
 
       // Store image sources
       imageElements.forEach((img) => {
-        if (img.src) {
-          images.push(img.src);
+        const imgElement = img as HTMLImageElement;
+        if (imgElement && imgElement.src) {
+          images.push(imgElement.src);
         }
       });
 
