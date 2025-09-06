@@ -1,0 +1,268 @@
+---
+// Lightbox component for displaying images in full screen
+---
+
+<!-- Lightbox Modal -->
+<div
+  id="lightbox"
+  class="lightbox-animate fixed inset-0 z-[9999] hidden items-center justify-center p-4"
+>
+  <!-- Blurred backdrop -->
+  <div id="lightbox-backdrop" class="lightbox-backdrop absolute inset-0"></div>
+
+  <!-- Modal content -->
+  <div
+    class="relative z-10 max-h-full max-w-5xl scale-95 transform overflow-hidden rounded-2xl bg-white opacity-0 shadow-2xl transition-all duration-300"
+    id="lightbox-content"
+  >
+    <!-- Image container -->
+    <div class="relative">
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        class="max-h-[80vh] max-w-full object-contain"
+      />
+
+      <!-- Close button -->
+      <button
+        id="closeLightbox"
+        class="bg-opacity-90 hover:bg-opacity-100 absolute top-4 right-4 rounded-full bg-white p-2 text-gray-600 shadow-lg transition-all hover:text-gray-800"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Navigation arrows in lightbox -->
+      <button
+        id="lightboxPrevBtn"
+        class="bg-opacity-90 hover:bg-opacity-100 absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-white p-3 text-gray-600 shadow-lg transition-all hover:text-gray-800"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+
+      <button
+        id="lightboxNextBtn"
+        class="bg-opacity-90 hover:bg-opacity-100 absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-white p-3 text-gray-600 shadow-lg transition-all hover:text-gray-800"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Image info bar -->
+    <div class="border-t bg-gray-50 px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h4 id="lightbox-title" class="text-lg font-semibold text-gray-900">
+            Property Images
+          </h4>
+          <p id="lightbox-description" class="text-sm text-gray-600">
+            View our property gallery
+          </p>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span id="lightbox-counter" class="text-sm text-gray-500">1 of 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Initialize lightbox functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxContent = document.getElementById("lightbox-content");
+    const lightboxBackdrop = document.getElementById("lightbox-backdrop");
+    const lightboxTitle = document.getElementById("lightbox-title");
+    const lightboxDescription = document.getElementById("lightbox-description");
+    const lightboxCounter = document.getElementById("lightbox-counter");
+    const closeLightboxBtn = document.getElementById("closeLightbox");
+    const lightboxPrevBtn = document.getElementById("lightboxPrevBtn");
+    const lightboxNextBtn = document.getElementById("lightboxNextBtn");
+    
+    let currentImages = [];
+    let currentIndex = 0;
+    let currentTitle = "";
+
+    function updateLightboxContent() {
+      if (lightboxImage && currentImages[currentIndex]) {
+        lightboxImage.src = currentImages[currentIndex];
+        lightboxImage.alt = `${currentTitle} view ${currentIndex + 1}`;
+      }
+
+      if (lightboxCounter) {
+        lightboxCounter.textContent = `${currentIndex + 1} of ${currentImages.length}`;
+      }
+
+      if (lightboxTitle) {
+        lightboxTitle.textContent = currentTitle;
+      }
+
+      if (lightboxDescription) {
+        lightboxDescription.textContent = `View our ${currentTitle.toLowerCase()} gallery`;
+      }
+    }
+
+    function openLightbox(images, startIndex, title) {
+      currentImages = images;
+      currentIndex = startIndex;
+      currentTitle = title;
+
+      updateLightboxContent();
+
+      if (lightbox && lightboxContent) {
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+
+        // Prevent body scrolling
+        document.body.style.overflow = "hidden";
+        document.body.classList.add("lightbox-open");
+
+        // Dispatch event to stop carousel auto-advance
+        document.dispatchEvent(new CustomEvent('lightboxOpened'));
+
+        // Animate in
+        setTimeout(() => {
+          if (lightboxContent) {
+            lightboxContent.classList.remove("scale-95", "opacity-0");
+            lightboxContent.classList.add("scale-100", "opacity-100");
+          }
+        }, 10);
+      }
+    }
+
+    function closeLightbox() {
+      if (lightbox && lightboxContent) {
+        // Remove blur effect from body
+        document.body.classList.remove("lightbox-open");
+
+        // Animate out
+        lightboxContent.classList.remove("scale-100", "opacity-100");
+        lightboxContent.classList.add("scale-95", "opacity-0");
+
+        // Hide after animation
+        setTimeout(() => {
+          if (lightbox) {
+            lightbox.classList.add("hidden");
+            lightbox.classList.remove("flex");
+          }
+        }, 300);
+      }
+      
+      // Restore body scrolling
+      document.body.style.overflow = "";
+      
+      // Dispatch event to restart carousel auto-advance
+      document.dispatchEvent(new CustomEvent('lightboxClosed'));
+    }
+
+    function nextImage() {
+      if (currentImages.length > 0) {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        updateLightboxContent();
+      }
+    }
+
+    function previousImage() {
+      if (currentImages.length > 0) {
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        updateLightboxContent();
+      }
+    }
+
+    // Listen for custom lightbox events from carousels
+    document.addEventListener('openLightbox', (e) => {
+      const { images, currentIndex: startIndex, title } = e.detail;
+      openLightbox(images, startIndex, title);
+    });
+
+    // Event listeners
+    if (closeLightboxBtn) {
+      closeLightboxBtn.addEventListener("click", closeLightbox);
+    }
+
+    if (lightboxPrevBtn) {
+      lightboxPrevBtn.addEventListener("click", previousImage);
+    }
+
+    if (lightboxNextBtn) {
+      lightboxNextBtn.addEventListener("click", nextImage);
+    }
+
+    // Close lightbox when clicking on backdrop
+    if (lightboxBackdrop) {
+      lightboxBackdrop.addEventListener("click", closeLightbox);
+    }
+
+    // Close when clicking outside modal content
+    if (lightbox) {
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    }
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+      if (lightbox && !lightbox.classList.contains("hidden")) {
+        e.preventDefault(); // Prevent default scrolling behavior
+        
+        if (e.key === "Escape") {
+          closeLightbox();
+        } else if (e.key === "ArrowLeft") {
+          previousImage();
+        } else if (e.key === "ArrowRight") {
+          nextImage();
+        }
+      }
+    });
+
+    // Prevent scrolling when lightbox is open
+    document.addEventListener('wheel', (e) => {
+      if (lightbox && !lightbox.classList.contains("hidden")) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    document.addEventListener('touchmove', (e) => {
+      if (lightbox && !lightbox.classList.contains("hidden")) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  });
+</script>

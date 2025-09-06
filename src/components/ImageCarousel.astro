@@ -1,0 +1,248 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+  images: any[];
+  title: string;
+  description: string;
+  carouselId: string;
+  className?: string;
+}
+
+const { images, title, description, carouselId, className = "" } = Astro.props;
+---
+
+<div class={`relative ${className}`}>
+  <!-- Main Image Display -->
+  <div class="carousel-container mb-4 overflow-hidden rounded-lg shadow-lg">
+    <div
+      class="carousel-track flex transition-transform duration-500 ease-in-out"
+      id={`carousel-track-${carouselId}`}
+    >
+      {
+        images.map((image, index) => (
+          <div class="carousel-slide min-w-full">
+            <Image
+              src={image}
+              alt={`${title} view ${index + 1}`}
+              class="h-96 w-full cursor-pointer object-cover"
+              widths={[480, 768, 1024]}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              data-carousel-id={carouselId}
+              data-image-index={index}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Carousel Controls -->
+  <button
+    class="absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+    id={`prevBtn-${carouselId}`}
+    aria-label="Previous image"
+  >
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+
+  <button
+    class="absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+    id={`nextBtn-${carouselId}`}
+    aria-label="Next image"
+  >
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Thumbnail Images -->
+  <div class="mt-4 flex justify-center space-x-2 overflow-x-auto pb-2">
+    {
+      images.map((image, index) => (
+        <button
+          class="thumbnail-btn h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg border-2 border-transparent transition-colors hover:border-cyan-500"
+          data-carousel-id={carouselId}
+          data-index={index}
+        >
+          <Image
+            src={image}
+            alt={`${title} thumbnail ${index + 1}`}
+            class="h-full w-full object-cover"
+            widths={[64]}
+            sizes="64px"
+          />
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  // Initialize carousel functionality for each carousel instance
+  document.addEventListener("DOMContentLoaded", () => {
+    // Find all carousel containers
+    const carousels = document.querySelectorAll("[data-carousel-id]");
+    const carouselInstances = new Map();
+
+    carousels.forEach((carousel) => {
+      const carouselId = carousel.getAttribute("data-carousel-id");
+      if (!carouselId || carouselInstances.has(carouselId)) return;
+
+      const track = document.getElementById(`carousel-track-${carouselId}`);
+      const thumbnails = document.querySelectorAll(
+        `[data-carousel-id="${carouselId}"][data-index]`
+      );
+      const prevBtn = document.getElementById(`prevBtn-${carouselId}`);
+      const nextBtn = document.getElementById(`nextBtn-${carouselId}`);
+      const imageElements = document.querySelectorAll(
+        `[data-carousel-id="${carouselId}"][data-image-index]`
+      );
+
+      if (!track || thumbnails.length === 0) return;
+
+      let currentSlide = 0;
+      const totalSlides = thumbnails.length;
+      const images = [];
+      let autoAdvanceInterval;
+
+      // Store image sources
+      imageElements.forEach((img) => {
+        if (img.src) {
+          images.push(img.src);
+        }
+      });
+
+      function updateCarousel() {
+        const translateX = -currentSlide * 100;
+        track.style.transform = `translateX(${translateX}%)`;
+
+        // Update thumbnail borders
+        thumbnails.forEach((thumbnail, index) => {
+          if (index === currentSlide) {
+            thumbnail.classList.remove("border-transparent");
+            thumbnail.classList.add("border-cyan-500");
+          } else {
+            thumbnail.classList.remove("border-cyan-500");
+            thumbnail.classList.add("border-transparent");
+          }
+        });
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+
+      function previousSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+      }
+
+      function openLightbox() {
+        const lightboxEvent = new CustomEvent("openLightbox", {
+          detail: {
+            images: images,
+            currentIndex: currentSlide,
+            title: carouselId,
+          },
+        });
+        document.dispatchEvent(lightboxEvent);
+      }
+
+      function startAutoAdvance() {
+        autoAdvanceInterval = setInterval(() => {
+          nextSlide();
+        }, 5000);
+      }
+
+      function stopAutoAdvance() {
+        if (autoAdvanceInterval) {
+          clearInterval(autoAdvanceInterval);
+        }
+      }
+
+      // Event listeners
+      if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+          stopAutoAdvance();
+          previousSlide();
+          startAutoAdvance();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+          stopAutoAdvance();
+          nextSlide();
+          startAutoAdvance();
+        });
+      }
+
+      // Thumbnail click handlers
+      thumbnails.forEach((thumbnail, index) => {
+        thumbnail.addEventListener("click", () => {
+          stopAutoAdvance();
+          goToSlide(index);
+          startAutoAdvance();
+        });
+      });
+
+      // Main image click handlers
+      imageElements.forEach((img) => {
+        img.addEventListener("click", () => {
+          stopAutoAdvance();
+          openLightbox();
+        });
+      });
+
+      // Pause auto-advance on hover
+      const carouselContainer = carousel.closest(".relative");
+      if (carouselContainer) {
+        carouselContainer.addEventListener("mouseenter", stopAutoAdvance);
+        carouselContainer.addEventListener("mouseleave", startAutoAdvance);
+      }
+
+      // Initialize
+      updateCarousel();
+      startAutoAdvance();
+
+      // Store instance for cleanup
+      carouselInstances.set(carouselId, {
+        stopAutoAdvance,
+        startAutoAdvance,
+        currentSlide: () => currentSlide,
+        totalSlides,
+        images,
+      });
+    });
+
+    // Listen for lightbox close events to restart auto-advance
+    document.addEventListener("lightboxClosed", () => {
+      carouselInstances.forEach((instance) => {
+        instance.startAutoAdvance();
+      });
+    });
+
+    document.addEventListener("lightboxOpened", () => {
+      carouselInstances.forEach((instance) => {
+        instance.stopAutoAdvance();
+      });
+    });
+  });
+</script>
