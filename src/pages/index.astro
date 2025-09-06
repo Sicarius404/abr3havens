@@ -49,55 +49,55 @@ const rentalImages = [
   </head>
   <body class="bg-gray-900 text-white">
     <Header />
-    <section class="relative h-[60vh] w-full flex items-center justify-center">
+    <section class="relative flex h-[60vh] w-full items-center justify-center">
       <div class="absolute inset-0 bg-black/50" aria-hidden="true"></div>
       <Image
         src={mainBuilding}
         alt="Main building of Abr3havens, a modern architectural structure."
-        class="absolute inset-0 w-full h-full object-cover -z-10"
+        class="absolute inset-0 -z-10 h-full w-full object-cover"
         widths={[480, 768, 1024, 1920]}
         sizes="(max-width: 768px) 100vw, 50vw"
       />
       <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11/12 max-w-6xl"
+        class="absolute top-1/2 left-1/2 w-11/12 max-w-6xl -translate-x-1/2 -translate-y-1/2"
       >
         <h1
-          class="text-2xl sm:text-4xl lg:text-6xl font-bold text-center text-white mb-4 md:mb-8"
+          class="mb-4 text-center text-2xl font-bold text-white sm:text-4xl md:mb-8 lg:text-6xl"
           style="font-family: 'Poppins', sans-serif;"
         >
           We don’t just invest in property, we restore possibility!
         </h1>
-        <div class="border-2 md:border-4 border-white/75 p-2 md:p-8 lg:p-12">
+        <div class="border-2 border-white/75 p-2 md:border-4 md:p-8 lg:p-12">
           <div
-            class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 lg:gap-12 text-center"
+            class="flex flex-col items-center justify-center gap-2 text-center md:flex-row md:gap-6 lg:gap-12"
           >
             <div class="border border-white/75 p-1 md:p-4 lg:p-8">
-              <h3 class="text-xl md:text-4xl font-bold">3</h3>
-              <p class="text-xs md:text-lg uppercase tracking-wider">
+              <h3 class="text-xl font-bold md:text-4xl">3</h3>
+              <p class="text-xs tracking-wider uppercase md:text-lg">
                 Properties
               </p>
             </div>
 
             <div class="h-4 border-l-2 border-cyan-400 md:hidden"></div>
             <div
-              class="hidden md:block w-12 lg:w-24 border-t-2 lg:border-t-4 border-cyan-400"
+              class="hidden w-12 border-t-2 border-cyan-400 md:block lg:w-24 lg:border-t-4"
             >
             </div>
 
             <div class="border border-white/75 p-1 md:p-4 lg:p-8">
-              <h3 class="text-xl md:text-4xl font-bold">12</h3>
-              <p class="text-xs md:text-lg uppercase tracking-wider">Spaces</p>
+              <h3 class="text-xl font-bold md:text-4xl">12</h3>
+              <p class="text-xs tracking-wider uppercase md:text-lg">Spaces</p>
             </div>
 
             <div class="h-4 border-l-2 border-cyan-400 md:hidden"></div>
             <div
-              class="hidden md:block w-12 lg:w-24 border-t-2 lg:border-t-4 border-cyan-400"
+              class="hidden w-12 border-t-2 border-cyan-400 md:block lg:w-24 lg:border-t-4"
             >
             </div>
 
             <div class="border border-white/75 p-1 md:p-4 lg:p-8">
-              <h3 class="text-xl md:text-4xl font-bold">...</h3>
-              <p class="text-xs md:text-lg uppercase tracking-wider">
+              <h3 class="text-xl font-bold md:text-4xl">...</h3>
+              <p class="text-xs tracking-wider uppercase md:text-lg">
                 Possibilities
               </p>
             </div>
@@ -106,38 +106,38 @@ const rentalImages = [
       </div>
     </section>
     <div class="h-3 bg-gray-800"></div>
-    <main class="bg-white text-gray-800 py-20 px-4 sm:px-6 lg:px-8">
+    <main class="bg-white px-4 py-20 text-gray-800 sm:px-6 lg:px-8">
       <div
-        class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+        class="container mx-auto grid grid-cols-1 items-center gap-16 md:grid-cols-2"
       >
         <div class="text-left">
-          <h2 class="text-4xl font-extrabold tracking-tight sm:text-5xl mb-4">
+          <h2 class="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
             More than a rental
           </h2>
-          <p class="text-4xl font-semibold text-cyan-500 mb-8">
+          <p class="mb-8 text-4xl font-semibold text-cyan-500">
             The ABR<sup>3</sup> difference
           </p>
           <div class="space-y-6">
             <div>
-              <h3 class="text-xl font-bold mb-2">Vacation rewards</h3>
+              <h3 class="mb-2 text-xl font-bold">Vacation rewards</h3>
               <p class="text-lg text-gray-600">
                 → Exclusive tenant discounts at our vacation property.
               </p>
             </div>
             <div>
-              <h3 class="text-xl font-bold mb-2">Customer centred</h3>
+              <h3 class="mb-2 text-xl font-bold">Customer centred</h3>
               <p class="text-lg text-gray-600">
                 → Your needs guide everything we do.
               </p>
             </div>
             <div>
-              <h3 class="text-xl font-bold mb-2">Connection benefits</h3>
+              <h3 class="mb-2 text-xl font-bold">Connection benefits</h3>
               <p class="text-lg text-gray-600">
                 → “The more connected you are, the more you gain.”
               </p>
             </div>
             <div>
-              <h3 class="text-xl font-bold mb-2">Always maintained</h3>
+              <h3 class="mb-2 text-xl font-bold">Always maintained</h3>
               <p class="text-lg text-gray-600">
                 → “Clean, safe, and well-cared-for spaces, always.”
               </p>
@@ -145,7 +145,7 @@ const rentalImages = [
           </div>
           <a
             href="/about"
-            class="inline-block bg-gray-900 text-white font-bold py-3 px-6 rounded mt-12 hover:bg-gray-700 transition-colors"
+            class="mt-12 inline-block rounded bg-gray-900 px-6 py-3 font-bold text-white transition-colors hover:bg-gray-700"
             >About Us</a
           >
         </div>
@@ -153,27 +153,27 @@ const rentalImages = [
           <Image
             src={abr3havensLogo}
             alt="Abr3havens Logo"
-            class="max-w-xs md:max-w-md w-full"
+            class="w-full max-w-xs md:max-w-md"
           />
         </div>
       </div>
     </main>
 
     <!-- Our Latest Investments Section -->
-    <section class="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
+    <section class="bg-gray-50 px-4 py-20 sm:px-6 lg:px-8">
       <div class="container mx-auto">
         <h2
-          class="text-4xl font-extrabold tracking-tight text-gray-900 text-center mb-16"
+          class="mb-16 text-center text-4xl font-extrabold tracking-tight text-gray-900"
         >
           Our Latest Investments
         </h2>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <!-- Image Carousel -->
           <div class="relative">
             <!-- Main Image Display -->
             <div
-              class="carousel-container overflow-hidden rounded-lg shadow-lg mb-4"
+              class="carousel-container mb-4 overflow-hidden rounded-lg shadow-lg"
             >
               <div
                 class="carousel-track flex transition-transform duration-500 ease-in-out"
@@ -185,7 +185,7 @@ const rentalImages = [
                       <Image
                         src={image}
                         alt={`Cabanas rental property view ${index + 1}`}
-                        class="w-full h-96 object-cover cursor-pointer"
+                        class="h-96 w-full cursor-pointer object-cover"
                         widths={[480, 768, 1024]}
                         sizes="(max-width: 768px) 100vw, 50vw"
                         onclick="openLightbox()"
@@ -198,12 +198,12 @@ const rentalImages = [
 
             <!-- Carousel Controls -->
             <button
-              class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
+              class="absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
               id="prevBtn"
               aria-label="Previous image"
             >
               <svg
-                class="w-6 h-6"
+                class="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -217,12 +217,12 @@ const rentalImages = [
             </button>
 
             <button
-              class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors z-10"
+              class="absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
               id="nextBtn"
               aria-label="Next image"
             >
               <svg
-                class="w-6 h-6"
+                class="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -237,18 +237,18 @@ const rentalImages = [
 
             <!-- Thumbnail Images -->
             <div
-              class="flex justify-center mt-4 space-x-2 overflow-x-auto pb-2"
+              class="mt-4 flex justify-center space-x-2 overflow-x-auto pb-2"
             >
               {
                 rentalImages.map((image, index) => (
                   <button
-                    class="thumbnail-btn flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 border-transparent hover:border-cyan-500 transition-colors"
+                    class="thumbnail-btn h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg border-2 border-transparent transition-colors hover:border-cyan-500"
                     data-index={index}
                   >
                     <Image
                       src={image}
                       alt={`Thumbnail ${index + 1}`}
-                      class="w-full h-full object-cover"
+                      class="h-full w-full object-cover"
                       widths={[64]}
                       sizes="64px"
                     />
@@ -261,12 +261,12 @@ const rentalImages = [
           <!-- Text Content -->
           <div class="text-left">
             <div
-              class="bg-white p-8 rounded-lg shadow-lg border-l-4 border-cyan-500"
+              class="rounded-lg border-l-4 border-cyan-500 bg-white p-8 shadow-lg"
             >
-              <h3 class="text-2xl font-bold text-gray-900 mb-6">
+              <h3 class="mb-6 text-2xl font-bold text-gray-900">
                 Our First Vacation Rental
               </h3>
-              <div class="prose prose-lg text-gray-700 leading-relaxed">
+              <div class="prose prose-lg leading-relaxed text-gray-700">
                 <p class="mb-4">
                   We're excited to introduce our very first vacation rental —
                   the start of many more to come.
@@ -277,9 +277,9 @@ const rentalImages = [
                   friends, and travellers to relax, connect, and make lasting
                   memories.
                 </p>
-                <div class="mt-6 pt-6 border-t border-gray-200">
+                <div class="mt-6 border-t border-gray-200 pt-6">
                   <p
-                    class="text-sm text-cyan-600 font-semibold uppercase tracking-wider"
+                    class="text-sm font-semibold tracking-wider text-cyan-600 uppercase"
                   >
                     Location: Amanzimtoti Beachfront
                   </p>
@@ -294,15 +294,15 @@ const rentalImages = [
     <!-- Lightbox Modal -->
     <div
       id="lightbox"
-      class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 lightbox-animate"
+      class="lightbox-animate fixed inset-0 z-[9999] hidden items-center justify-center p-4"
     >
       <!-- Blurred backdrop -->
-      <div id="lightbox-backdrop" class="absolute inset-0 lightbox-backdrop">
+      <div id="lightbox-backdrop" class="lightbox-backdrop absolute inset-0">
       </div>
 
       <!-- Modal content -->
       <div
-        class="relative max-w-5xl max-h-full z-10 bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0"
+        class="relative z-10 max-h-full max-w-5xl scale-95 transform overflow-hidden rounded-2xl bg-white opacity-0 shadow-2xl transition-all duration-300"
         id="lightbox-content"
       >
         <!-- Image container -->
@@ -311,16 +311,16 @@ const rentalImages = [
             id="lightbox-image"
             src=""
             alt=""
-            class="max-w-full max-h-[80vh] object-contain"
+            class="max-h-[80vh] max-w-full object-contain"
           />
 
           <!-- Close button -->
           <button
             id="closeLightbox"
-            class="absolute top-4 right-4 text-gray-600 bg-white bg-opacity-90 rounded-full p-2 hover:bg-opacity-100 hover:text-gray-800 transition-all shadow-lg"
+            class="bg-opacity-90 hover:bg-opacity-100 absolute top-4 right-4 rounded-full bg-white p-2 text-gray-600 shadow-lg transition-all hover:text-gray-800"
           >
             <svg
-              class="w-6 h-6"
+              class="h-6 w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -336,10 +336,10 @@ const rentalImages = [
           <!-- Navigation arrows in lightbox -->
           <button
             id="lightboxPrevBtn"
-            class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600 bg-white bg-opacity-90 rounded-full p-3 hover:bg-opacity-100 hover:text-gray-800 transition-all shadow-lg"
+            class="bg-opacity-90 hover:bg-opacity-100 absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-white p-3 text-gray-600 shadow-lg transition-all hover:text-gray-800"
           >
             <svg
-              class="w-6 h-6"
+              class="h-6 w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -354,10 +354,10 @@ const rentalImages = [
 
           <button
             id="lightboxNextBtn"
-            class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-600 bg-white bg-opacity-90 rounded-full p-3 hover:bg-opacity-100 hover:text-gray-800 transition-all shadow-lg"
+            class="bg-opacity-90 hover:bg-opacity-100 absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-white p-3 text-gray-600 shadow-lg transition-all hover:text-gray-800"
           >
             <svg
-              class="w-6 h-6"
+              class="h-6 w-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -372,7 +372,7 @@ const rentalImages = [
         </div>
 
         <!-- Image info bar -->
-        <div class="bg-gray-50 px-6 py-4 border-t">
+        <div class="border-t bg-gray-50 px-6 py-4">
           <div class="flex items-center justify-between">
             <div>
               <h4
