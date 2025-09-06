@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abr3havens.co.za/sitemap.xml
+Sitemap: https://abr3havens.co.za/sitemap-index.xml
