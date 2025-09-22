@@ -30,6 +30,9 @@ RUN if [ -f pnpm-lock.yaml ]; then \
 ############################
 FROM nginx:1.27-alpine AS runner
 
+# Install curl for healthcheck compatibility (e.g., Coolify)
+RUN apk add --no-cache curl
+
 # Copy built static site to Nginx html directory
 COPY --from=builder /app/dist /usr/share/nginx/html
 
@@ -51,7 +54,7 @@ RUN printf '%s\n' \
 
 EXPOSE 80
 
-HEALTHCHECK --interval=30s --timeout=3s --retries=3 CMD wget -qO- http://localhost/ | grep -qi '<html' || exit 1
+HEALTHCHECK --interval=30s --timeout=3s --retries=3 CMD curl -fsS http://localhost/ >/dev/null || exit 1
 
 CMD ["nginx", "-g", "daemon off;"]
 
