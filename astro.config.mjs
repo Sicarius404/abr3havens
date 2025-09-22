@@ -9,6 +9,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://abr3havens.co.za",
 
+  output: "static",
+
   vite: {
     plugins: [tailwindcss()],
   },
