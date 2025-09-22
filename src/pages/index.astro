@@ -40,7 +40,7 @@ const tamariskImages = [cabanas4, cabanas5, cabanas6];
 
 <BaseLayout
   title="ABR³Havens - We don't just invest in property, we restore possibility!"
-  description="Discover ABR³Havens' exceptional vacation rentals and investment properties. From beachfront cabanas to unique spaces, we create possibilities for unforgettable experiences."
+  description="Discover ABR³Havens' exceptional vacation rentals and investment properties."
 >
   <Header />
   <section class="relative flex h-[60vh] w-full items-center justify-center">
@@ -111,36 +111,75 @@ const tamariskImages = [cabanas4, cabanas5, cabanas6];
         <p class="mb-8 text-4xl font-semibold text-cyan-500">
           The ABR<sup>3</sup> difference
         </p>
-        <div class="space-y-6">
-          <div>
-            <h3 class="mb-2 text-xl font-bold">Vacation rewards</h3>
-            <p class="text-lg text-gray-600">
-              → Exclusive tenant discounts at our vacation property.
-            </p>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
+          <div
+            class="group relative flex min-h-[140px] cursor-pointer flex-col justify-center rounded-lg border border-gray-200 p-6 transition-all duration-300 hover:bg-gray-50 hover:shadow-md"
+          >
+            <h3 class="mb-2 text-center text-lg font-bold text-gray-900">
+              Cheaper than any OTA
+            </h3>
+            <div
+              class="description max-h-0 overflow-hidden text-center text-base text-gray-600 transition-all duration-300 group-hover:max-h-20 md:group-hover:max-h-none"
+            >
+              We are 10-15% cheaper than any online travel agency
+            </div>
           </div>
-          <div>
-            <h3 class="mb-2 text-xl font-bold">Customer centred</h3>
-            <p class="text-lg text-gray-600">
-              → Your needs guide everything we do.
-            </p>
+          <div
+            class="group relative flex min-h-[140px] cursor-pointer flex-col justify-center rounded-lg border border-gray-200 p-6 transition-all duration-300 hover:bg-gray-50 hover:shadow-md"
+          >
+            <h3 class="mb-2 text-center text-lg font-bold text-gray-900">
+              Switch and save
+            </h3>
+            <div
+              class="description max-h-0 overflow-hidden text-center text-base text-gray-600 transition-all duration-300 group-hover:max-h-20 md:group-hover:max-h-none"
+            >
+              If you first booked through an agent and switch to direct, you get
+              an extra 5% on top of the 10-15% off
+            </div>
           </div>
-          <div>
-            <h3 class="mb-2 text-xl font-bold">Connection benefits</h3>
-            <p class="text-lg text-gray-600">
-              → “The more connected you are, the more you gain.”
-            </p>
+          <div
+            class="group relative flex min-h-[140px] cursor-pointer flex-col justify-center rounded-lg border border-gray-200 p-6 transition-all duration-300 hover:bg-gray-50 hover:shadow-md"
+          >
+            <h3 class="mb-2 text-center text-lg font-bold text-gray-900">
+              Repeat perks
+            </h3>
+            <div
+              class="description max-h-0 overflow-hidden text-center text-base text-gray-600 transition-all duration-300 group-hover:max-h-20 md:group-hover:max-h-none"
+            >
+              Guests who return get an additional discount or complimentary perk
+            </div>
           </div>
-          <div>
-            <h3 class="mb-2 text-xl font-bold">Always maintained</h3>
-            <p class="text-lg text-gray-600">
-              → “Clean, safe, and well-cared-for spaces, always.”
-            </p>
+          <div
+            class="group relative flex min-h-[140px] cursor-pointer flex-col justify-center rounded-lg border border-gray-200 p-6 transition-all duration-300 hover:bg-gray-50 hover:shadow-md"
+          >
+            <h3 class="mb-2 text-center text-lg font-bold text-gray-900">
+              Exclusive tenant perks
+            </h3>
+            <div
+              class="description max-h-0 overflow-hidden text-center text-base text-gray-600 transition-all duration-300 group-hover:max-h-20 md:group-hover:max-h-none"
+            >
+              Any and all long term clients at our other properties get
+              additional discount
+            </div>
+          </div>
+          <div
+            class="group relative col-span-1 flex min-h-[140px] cursor-pointer flex-col justify-center rounded-lg border border-gray-200 p-6 transition-all duration-300 hover:bg-gray-50 hover:shadow-md sm:col-span-2 lg:col-span-1 lg:col-start-1"
+          >
+            <h3 class="mb-2 text-center text-lg font-bold text-gray-900">
+              Connection benefits
+            </h3>
+            <div
+              class="description max-h-0 overflow-hidden text-center text-base text-gray-600 transition-all duration-300 group-hover:max-h-20 md:group-hover:max-h-none"
+            >
+              If you have any connection to the ABR<sup>3</sup> Group of companies
+              you get an additional discount
+            </div>
           </div>
         </div>
         <a
-          href="/about"
+          href="/contact"
           class="mt-12 inline-block rounded bg-gray-900 px-6 py-3 font-bold text-white transition-colors hover:bg-gray-700"
-          >About Us</a
+          >Contact Us</a
         >
       </div>
       <div class="flex justify-center md:justify-end">
@@ -356,4 +395,95 @@ const tamariskImages = [cabanas4, cabanas5, cabanas6];
 
   <!-- Lightbox Component -->
   <Lightbox />
+
+  <style>
+    /* Disable hover effects on touch devices */
+    .touch-device.group:hover {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+    .touch-device .description {
+      transition: max-height 0.3s ease-in-out !important;
+    }
+  </style>
+
+  <script>
+    // Handle responsive touch/hover interactions for feature blocks
+    document.addEventListener("DOMContentLoaded", function () {
+      const featureBlocks = document.querySelectorAll(".group");
+
+      // Store click handlers and expanded states
+      const blockStates = new Map();
+
+      // Detect if device should use touch interaction
+      const shouldUseTouchInteraction = () => {
+        const isTouchDevice =
+          "ontouchstart" in window ||
+          navigator.maxTouchPoints > 0 ||
+          (navigator as any).msMaxTouchPoints > 0;
+        const isSmallScreen = window.innerWidth < 1024; // Use lg breakpoint
+        return isTouchDevice && isSmallScreen;
+      };
+
+      // Setup interaction mode
+      const updateInteractionMode = () => {
+        const useTouchMode = shouldUseTouchInteraction();
+
+        featureBlocks.forEach((block) => {
+          const description = block.querySelector(
+            ".description"
+          ) as HTMLElement;
+
+          if (useTouchMode) {
+            // Enable touch mode
+            block.classList.add("touch-device");
+
+            // Add click handler if not already added
+            if (!blockStates.has(block)) {
+              let isExpanded = false;
+              const clickHandler = function (e) {
+                e.preventDefault();
+                if (isExpanded) {
+                  description.style.maxHeight = "0";
+                  block.classList.remove("bg-gray-50", "shadow-md");
+                  isExpanded = false;
+                } else {
+                  description.style.maxHeight = description.scrollHeight + "px";
+                  block.classList.add("bg-gray-50", "shadow-md");
+                  isExpanded = true;
+                }
+              };
+
+              block.addEventListener("click", clickHandler);
+              blockStates.set(block, { clickHandler, isExpanded });
+            }
+          } else {
+            // Enable hover mode
+            block.classList.remove("touch-device");
+
+            // Reset any expanded state and inline styles
+            description.style.maxHeight = "";
+            block.classList.remove("bg-gray-50", "shadow-md");
+
+            // Remove click handler if it exists
+            if (blockStates.has(block)) {
+              const { clickHandler } = blockStates.get(block);
+              block.removeEventListener("click", clickHandler);
+              blockStates.delete(block);
+            }
+          }
+        });
+      };
+
+      // Initial setup
+      updateInteractionMode();
+
+      // Update on window resize (for dev tools switching)
+      let resizeTimeout;
+      window.addEventListener("resize", function () {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(updateInteractionMode, 250);
+      });
+    });
+  </script>
 </BaseLayout>
